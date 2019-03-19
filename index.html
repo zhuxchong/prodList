@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2hatsDemo</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/assets.js"></script>
+
+
+</head>
+<body onload="test1();loadFunction()">
+<div id="top" class=".col-xs-12 .col-sm-12 .col-md-12 .col-lg-12">
+    <div id="topContainer" style="background-image: url('assets/forest.gif');background-size:100% 100%;">
+        <div id="layer1">
+
+            <i class="large material-icons dp48" style="margin-left:5%;margin-top:1%">vibration</i>
+            <p id="title" style="display: inline-block;margin-top:1%;margin-left: 1%;font-family: Lucida Console, Monaco, monospace">MOKUZAI</p>
+            <i class="large material-icons dp48" id="lastTwo" style="">search</i>
+            <i class="large material-icons dp48" id="lastOne" style="margin-top:1%">dehaze</i>
+            <span class="verContent">Luke Luke Luke</span>
+            <h2 class="topContent firstLine" style="word-spacing:15px;font-family: Comic Sans MS, cursive, sans-serif">Great design is eliminating</h2>
+            <h2 class="topContent" style="word-spacing:15px;font-family: Comic Sans MS, cursive, sans-serif">all unnecessary details</h2>
+            <h6 class="topContent" style="font-family: Comic Sans MS, cursive, sans-serif">———  MIN D . TRAN</h6>
+
+        </div>
+    </div>
+
+</div>
+<div id="main" class=".col-xs-12 .col-sm-12 .col-md-12 .col-lg-12">
+    <div class="upContent" style="text-align: center;">
+        <span style="margin:0px 30px; border-top:1px solid black;height: 30px" class="upLable1">most popular</span>
+        <span style="margin:0px 30px;height: 30px" class="upLable2">lowest price</span>
+        <span style="margin:0px 30px;height: 30px" class="upLable3">highest price</span>
+    </div>
+    <div id="img-container" >
+
+    </div>
+    <div class="bottomContent">
+        <div id="colOne"></div>
+        <div id="colTwo"></div>
+        <div id="colThree"></div>
+    </div>
+
+    <div class="upContent" style="text-align: center;">
+        <span style="margin:0px 30px; border-bottom:1px solid black;height: 30px" class="upLable1">1</span>
+        <span style="margin:0px 30px;height: 30px" class="upLable2">2</span>
+        <span style="margin:0px 30px;height: 30px" class="upLable3">3</span>
+    </div>
+</div>
+
+
+<div id="bottom" class=".col-xs-12 .col-sm-12 .col-md-12 .col-lg-12">
+    <div class="btCol btFirst">
+        <p class="btTitle">INFO</p>
+        <p class="btContent">About</p>
+        <p class="btContent">Journal</p>
+        <p class="btContent">Contact</p>
+        <p class="" style="color:transparent;line-height: 10px;">1</p>
+    </div>
+    <div class="btCol">
+        <p class="btTitle">CATEGORIES</p>
+        <p class="btContent">Wood</p>
+        <p class="btContent">Fashion</p>
+        <p class="btContent">UX Stuff</p>
+        <p class="" style="color:transparent;line-height: 10px;">1</p>
+    </div>
+    <div class="btCol">
+        <p class="btTitle">Follow</p>
+        <p class="btContent" style="color:cornflowerblue">Facebook</p>
+        <p class="btContent" style="color:lightskyblue">Twitter</p>
+        <p class="btContent">Instgram</p>
+        <p class="btContent" style="color:green">Wechat</p>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    loadFunction=()=>{
+        if (window.innerWidth<=992){
+            changeBtElement();
+        }
+    };
+    changeBtElement=()=>{
+        let btList=document.getElementsByClassName('btCol');
+        storeHtml={};
+        Array.prototype.map.call(btList,(item,index)=>{
+                let title = item.getElementsByClassName('btTitle')[0].innerHTML;
+                storeEle = [];
+                let content = item.getElementsByClassName('btContent');
+                Array.prototype.map.call(content, (itemC, indexC) => {
+                    storeEle.push(itemC.innerHTML);
+                })
+                storeHtml[title] = storeEle;
+            });
+        Object.keys(storeHtml).forEach(function(key,index){
+            //console.log(index);
+            //console.log(key,storeHtml[key]);
+            btList[index].innerHTML="<button style='margin:10px;' class='btButton'>"+key+"</button>";
+            btList[index].getElementsByClassName('btButton')[0].onclick=()=>{
+                let temp='';
+                storeHtml[key].map(item=>{
+                    temp=temp+','+item;
+                })
+                alert(temp);
+            }
+        });
+
+
+
+
+    }
+</script>
+</html>
